@@ -7,7 +7,7 @@ const userCardArea = document.getElementById("userCardArea");
 
 function showStatus(message, type = "info") {
     statusArea.innerHTML = "";
-    const alert = document.getElementById("div");
+    const alert = document.createElement("div");
     alert.className = `alert alert-${type} py-2 mb-0`;
     alert.textContent = message; 
 
@@ -20,7 +20,7 @@ function showLoading() {
    alert.className = "alert alert-warning d-flex align-items-center py-2 mb-0";
 
    const spinner = document.createElement("div");
-   spinner.className = "spinner-border spineer-border-sm me-2";
+   spinner.className = "spinner-border spinner-border-sm me-2";
 
    const text = document.createElement("span");
    text.textContent = "Loading JSON text from the API.....";
@@ -35,34 +35,34 @@ function showLoading() {
 function renderUserCard(userObj) {
     userCardArea.innerHTML = "";
 
-    const card = document.getElementById("div");
+    const card = document.createElement("div");
     card.className = "card spongebob-card shadow-lg";
 
-    const body = document.getElementById("div");
+    const body = document.createElement("div");
     body.className = "card-body";
 //eyes
-    const eyes = document.getElementById("div");
-    eyes.className = "spongbob-eyes";
+    const eyes = document.createElement("div");
+    eyes.className = "spongebob-eyes";
 
-    const eye1= document.getElementById("div");
+    const eye1= document.createElement("div");
     eye1.className = "spongebob-eye";
 
-    const eye2= document.getElementById("div");
+    const eye2= document.createElement("div");
     eye2.className = "spongebob-eye";
 
     eyes.appendChild(eye1);
     eyes.appendChild(eye2);
 //mouth
-    const mouth = document.getElementById("div");
+    const mouth = document.createElement("div");
     mouth.className = "spongebob-mouth";
 
-    const teeth= document.getElementById("div");
+    const teeth= document.createElement("div");
     teeth.className = "spongebob-teeth";
 
-    const tooth1= document.getElementById("div");
+    const tooth1= document.createElement("div");
     tooth1.className = "spongebob-tooth";
 
-    const tooth2= document.getElementById("div");
+    const tooth2= document.createElement("div");
     tooth2.className = "spongebob-tooth";
 
     teeth.appendChild(tooth1);
@@ -75,7 +75,7 @@ function renderUserCard(userObj) {
 
     //listGroup[]
     const list = document.createElement("ul");
-    title.className = "list-group list-group-flush mb-3";
+    list.className = "list-group list-group-flush mb-3";
 
     function addItem(label, value){
     const li = document.createElement("li");
@@ -89,14 +89,14 @@ function renderUserCard(userObj) {
 
     li.appendChild(strong);
     li.appendChild(span);
-    li.appendChild(li);
+    list.appendChild(li);
 }
 //add user information to list
     addItem("Name", userObj.name);
     addItem("Email", userObj.email);
     addItem("Phone", userObj.phone);
-    addItem("City", userObj.adress.city);
-    addItem("Company", userObj.comapny.name);
+    addItem("City", userObj.address.city);
+    addItem("Company", userObj.company.name);
     addItem("Website", userObj.website);
 
 //create JSON  TEXT section
@@ -133,13 +133,13 @@ function loadUser() {
     showLoading();
     userCardArea.innerHTML = "";
 
-     fetch("https://jsonplaceholder.typicode.com/user/1")
+     fetch("https://jsonplaceholder.typicode.com/users/1")
      .then((response) => {
         console.log("Raw response :", response);
         console.log("typeof response :", typeof response); //object
         
         if(!response.ok){
-            throw new error(`Http error: ${response.status}`);
+            throw new Error(`Http error: ${response.status}`);
         }
         return response.json(); //js text -> js object
      })
@@ -163,8 +163,9 @@ function loadUser() {
 
     //clear button
 function clearUser() {
+    userCardArea.innerHTML = "";
     showStatus("User Cleared. ready to load again.");
 }
 
 loadBtn.addEventListener("click", loadUser);
-loadBtn.addEventListener("click", clearUser);
+clearBtn.addEventListener("click", clearUser);
