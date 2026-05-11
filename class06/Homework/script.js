@@ -160,4 +160,11 @@ function loadUser() {
         userCardArea.innerHTML = "";
      });
     }
-    
+
+    //clear button
+function clearUser() {
+    showStatus("User Cleared. ready to load again.");
+}
+
+loadBtn.addEventListener("click", loadUser);
+loadBtn.addEventListener("click", clearUser);
