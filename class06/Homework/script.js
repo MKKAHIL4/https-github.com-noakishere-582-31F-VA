@@ -91,6 +91,38 @@ function renderUserCard(userObj) {
     li.appendChild(span);
     li.appendChild(li);
 }
+//add user information to list
+    addItem("Name", userObj.name);
+    addItem("Email", userObj.email);
+    addItem("Phone", userObj.phone);
+    addItem("City", userObj.adress.city);
+    addItem("Company", userObj.comapny.name);
+    addItem("Website", userObj.website);
 
+//create JSON  TEXT section
 
+    const details = document.createElement("details")
+    const summary = document.createElement("summary")
+    summary.textContent = "Sow JSON TEXT";
+
+//create pre element for formatted JSON
+    const pre = document.createElement("pre");
+    pre.className = "bg-light p-2 rounded small mt-2";
+    pre.textContent = JSON.stringify(userObj, null, 2);
+
+// ad pre and summary to details
+    details.appendChild(summary);
+    details.appendChild(pre);
+
+// assemble card elements
+    body.appendChild(eyes);
+    body.appendChild(mouth);
+    body.appendChild(teeth);
+    body.appendChild(title);
+    body.appendChild(list);
+    body.appendChild(details);
+
+    card.appendChild(body);
+
+    userCardArea.appendChild(card);
 }
