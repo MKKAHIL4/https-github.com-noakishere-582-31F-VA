@@ -126,3 +126,38 @@ function renderUserCard(userObj) {
 
     userCardArea.appendChild(card);
 }
+
+// fetch user from json placeholder
+
+function loadUser() {
+    showLoading();
+    userCardArea.innerHTML = "";
+
+     fetch("https://jsonplaceholder.typicode.com/user/1")
+     .then((response) => {
+        console.log("Raw response :", response);
+        console.log("typeof response :", typeof response); //object
+        
+        if(!response.ok){
+            throw new error(`Http error: ${response.status}`);
+        }
+        return response.json(); //js text -> js object
+     })
+     .then((userObj) => {
+        console.log("Parsed Js Object:", userObj);
+        console.log("typeof userObj:", typeof userObj); //object
+
+        const jsonText = JSON.stringify(userObj);
+         console.log("Stringified Json TEXT:", jsonText);
+        console.log("typeof jsonText:", typeof jsonText); //string
+        
+        showStatus("User loaded successfully "," success");
+        renderUserCard(userObj);
+     })
+     .catch((error) =>{
+        console.error("Fetch error:", error);
+        showStatus("Something went wrong while loading the user", "danger");
+        userCardArea.innerHTML = "";
+     });
+    }
+    
