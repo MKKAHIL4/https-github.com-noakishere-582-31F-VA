@@ -132,8 +132,9 @@ function renderUserCard(userObj) {
 function loadUser() {
     showLoading();
     userCardArea.innerHTML = "";
+    setTimeout(() => {
 
-     fetch("https://jsonplaceholder.typicode.com/users/1")
+     fetch("https://jsonplaceholder.typicode.com/users/7")
      .then((response) => {
         console.log("Raw response :", response);
         console.log("typeof response :", typeof response); //object
@@ -151,7 +152,7 @@ function loadUser() {
          console.log("Stringified Json TEXT:", jsonText);
         console.log("typeof jsonText:", typeof jsonText); //string
         
-        showStatus("User loaded successfully "," success");
+        showStatus("User Loaded Successfully "," success");
         renderUserCard(userObj);
      })
      .catch((error) =>{
@@ -159,12 +160,12 @@ function loadUser() {
         showStatus("Something went wrong while loading the user", "danger");
         userCardArea.innerHTML = "";
      });
-    }
-
+    }, 3000);
+}
     //clear button
 function clearUser() {
     userCardArea.innerHTML = "";
-    showStatus("User Cleared. ready to load again.");
+    showStatus("User Cleared. Ready to Load Again.");
 }
 
 loadBtn.addEventListener("click", loadUser);

@@ -1,0 +1,177 @@
+body{
+    
+    background: radial-gradient(circle at top, #d30707, #06a3f1);
+    min-height: 100vh;
+    color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Lucida Console", "Courier New", monospace;
+    background: #000;
+
+}
+
+.face-wrapper{
+    text-align: center;
+}
+
+/*happy face*/
+.happy-face {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: #ffe066;
+    border: 6px solid black;
+    position: relative;
+    margin: 0 auto 1.5rem auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0 , 0.15);
+}
+
+/*buttons-eyes circle inside a circle*/
+.eye-btn{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    position: absolute;
+    top: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0 , 0.2);
+}
+
+.eye-left{
+    left: 30px;
+    border: 3px solid black;
+}
+
+.eye-right{
+    right: 30px;
+     border: 3px solid black;
+}
+
+/*smile line*/
+.smile{
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 70px;
+    border-bottom-left-radius: 140px;
+    border-bottom-right-radius: 140px;
+    border: 6px solid black;
+    border-top: none; 
+}
+
+/*sponge bob style popup*/
+
+.spongebob-card{
+    background: #ffec99;
+    border: 4px solid #f08c00;
+    border-radius: 1.25rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.spongebob-card::before,
+.spongebob-card::after{
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255, 193, 7, 0.7);
+}
+
+.spongebob-card::before{
+    top: 18px;
+    left: 22px;
+}
+.spongebob-card::after{
+    top: 40px;
+    left: 22px;
+}
+
+.spongebob-eyes{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.spongebob-eye{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #000;
+    position: relative;
+}
+
+.spongebob-eye::before{
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #228be6;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spongebob-eye::after{
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spongebob-mouth{
+    width: 90px;
+    height: 45px;
+    border-bottom-left-radius: 90px;
+    border-bottom-right-radius: 90px;
+    border: 3px solid #000;
+    border-top: none;
+    margin: 0.25rem auto 0.75rem auto;
+}
+
+.spongebob-teeth{
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-top: -0.4rem;
+}
+
+.spongebob-tooth{
+    width: 20px;
+    height: 15px;
+    background: #ffffff;
+    border: 2px solid #000;
+    border-top: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.spongebob-tie {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 18px solid red;
+    margin: 0.25rem auto 0 auto;
+}
+
+.status-area{
+    min-height: 2.5rem;
+}
