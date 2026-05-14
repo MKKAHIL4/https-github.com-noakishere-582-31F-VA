@@ -52,6 +52,60 @@ async function loadUsers(){
     }
 }
 
+//RENDER user card
 
+function renderUserCard(user){
+    const col = document.createElement("div");
+    col.className = "col-md-6 col-lg-4 user-card";
+
+    col.dataset.name = user.name.toLowerCase();
+    col.innerHTML = `
+        <div class="card h-100 p-3">
+            <div class="card-body">
+                <h3 class="card-title mb-3">
+                    ${user.name}
+                </h3>
+                <p class="card-text">
+                  <strong>Email:</strong><br>
+                    ${user.email} 
+                </p>
+                
+                <p class="card-text">
+                  <strong>Phone:</strong><br>
+                    ${user.phone} 
+                </p>
+                
+                <p class="card-text">
+                  <strong>City:</strong><br>
+                    ${user.address.city} 
+                </p>
+                
+                <p class="card-text">
+                  <strong>Company:</strong><br>
+                    ${user.company.name} 
+                </p>
+                
+                <button class="btn vintage-btn mt-3 load-posts-btn">
+                Load Posts
+                </button>
+
+                <div class="posts-container mt-4"></div>
+            </div>
+        </div>
+    
+    `;
+    const loadPostsBtn = col.querySelector(".load-posts-btn");
+    const postsContainer = col.querySelector(".posts-container");
+
+    loadPostsBtn.addEventListener("click", () => {
+        loadPostsForUser(user, postsContainer, loadPostsBtn);
+    });
+
+    userContainer.appendChild(col);
+}
+
+
+
+// buttons event listener....
 loadBtn.addEventListener("click", loadUsers);
 clearBtn.addEventListener("click", clearDashboard);
