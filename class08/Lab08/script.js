@@ -112,7 +112,7 @@ function loadPostsForUser(user, postsContainer, button) {
     button.disabled = true;
     //loading message
     postsContainer.innerHTML = `
-        <div class="text-light">
+        <div class="text-loading">
             <div class="spinner-border spinner-border-sm me-2"></div>
             Loading Posts.....
             </div>   
