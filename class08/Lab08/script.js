@@ -25,3 +25,29 @@ function clearDashboard() {
     searchInput.innerHTML = "";
 }
 
+// Load Users
+function loadUsers(){
+    try{
+        setStatus(`
+            <div class="spinner-border spinner-boarder-sm me-2"</div>
+            Loading Users....`, "dark");
+        const response = await fetch("https://jsonplaceholder.typicode.com/users");
+        if(!response.ok){
+            throw new Error("Failed to Fetch users.");
+        }
+
+        const users = await.response.json();
+
+        loadedUsers = userProfile.slice(0, 5);
+
+        userContainer.innerHTML = "";
+
+        loadedUsers.forEach(user => {
+            renderUserCard(user);
+            
+        });
+        setStatus("Users loaded successfully.", "success");
+    }catch (error){
+        setStatus(error.message, "danger");
+    }
+}
