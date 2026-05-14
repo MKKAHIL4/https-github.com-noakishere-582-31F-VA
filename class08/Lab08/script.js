@@ -107,17 +107,83 @@ function renderUserCard(user){
 
 // load posts for users:
 
-async function loadPostsForUser(user, postsContainer, button) {
+function loadPostsForUser(user, postsContainer, button) {
+    // disable button
+    button.disabled = true;
+    //loading message
+    postsContainer.innerHTML = `
+        <div class="text-light">
+            <div class="spinner-border spinner-border-sm me-2"></div>
+            Loading Posts.....
+            </div>   
+    `;
+     fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(response => {
+            if(!response.ok){
 
-    //cache posts- challenge
+            throw new Error("Could not load posts.");
+        }
+        //convert to json
+        return response.json();
 
-    
+    })
+
+    .then(posts => {
+        let userPosts = [];
+
+        //loop through posts
+        posts.forEach(post => {
+              //check if posts belong to user
+            if(post.userId === user.id){
+                userPosts.push(post);
+            }
+        });
+      //keep first 3 posts
+      userPosts = userPosts.slice(0, 3);
+
+      //render posts
+      renderPosts(userPosts, postsContainer);
+      
+      //enable button
+      button.disabled = false;
+    })
+
+    .catch(error => {
+        postsContainer.innerHTML = `
+            <div class="alert alert-danger">
+                ${error.message}
+            </div>
+        `;
+         //enable button
+      button.disabled = false;
+    });
+
 }
 
 
 // render posts
 
 function renderPosts(posts, container){
+    container.innerHTML = "";
+
+    posts.forEach(post => {
+
+        const postDiv = document.createElement("div");
+        postDiv.className = "post-box";
+
+        postDiv.innerHTML = `
+        
+        <div class="post-title mb-2">
+            ${post.title}
+        </div>    
+
+        <div class="post-body">
+            ${post.body}
+        </div>    
+        `;
+
+        container.appendChild(postDiv);
+    });
 
 }
 
@@ -126,8 +192,11 @@ searchInput.addEventListener("input", () => {
     const searchValue = searchInput.value.toLowerCase();
 
     const cards = document.querySelectorAll(".user-card");
+
     cards.forEach(card => {
-        const userName = card.dataset.name;
+
+        const userName = card.dataset.name || "";
+
         if (userName.includes(searchValue)){
             card.style.display = "block";
         }else {
