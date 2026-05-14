@@ -105,6 +105,36 @@ function renderUserCard(user){
 }
 
 
+// load posts for users:
+
+async function loadPostsForUser(user, postsContainer, button) {
+
+    //cache posts- challenge
+
+    
+}
+
+
+// render posts
+
+function renderPosts(posts, container){
+
+}
+
+// search users
+searchInput.addEventListener("input", () => {
+    const searchValue = searchInput.value.toLowerCase();
+
+    const cards = document.querySelectorAll(".user-card");
+    cards.forEach(card => {
+        const userName = card.dataset.name;
+        if (userName.includes(searchValue)){
+            card.style.display = "block";
+        }else {
+            card.style.display = "none"
+        }
+    });
+});
 
 // buttons event listener....
 loadBtn.addEventListener("click", loadUsers);
