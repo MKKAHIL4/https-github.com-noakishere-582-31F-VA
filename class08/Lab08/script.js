@@ -16,3 +16,12 @@ function setStatus(message, type = "secondary") {
         </div>    
     `;
 }
+
+// clear dahsboard reset
+
+function clearDashboard() {
+    userContainer.innerHTML = "";
+    statusArea.innerHTML = "";
+    searchInput.innerHTML = "";
+}
+
