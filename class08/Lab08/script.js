@@ -7,3 +7,12 @@ const searchInput = document.getElementById("searchInput");
 
 let cachedPosts = {};
 let loadedUsers = [];
+
+//Status Fucntion 
+function setStatus(message, type = "secondary") {
+    statusArea.innerHTML = `
+        <div class="alert alert-${type}">
+            ${message}
+        </div>    
+    `;
+}
