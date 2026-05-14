@@ -8,7 +8,40 @@
   
 </head>
 <body>
-   
+   <div class="container py5">
+    <div class="textcenter mb-5">
+        <h1 class="main-title">User & Posts Dashboard</h1>
+        <p class="subtitle">
+            Styled dashboard using Fetch Api, Bootstrap and JSON data
+        </p>
+    </div>
+    <!--Buttons-->
+    <div class="d-flex flex-wrap gap-3 justify-content-center mb-4">
+
+        <button id="loadBtn" class="btn vintage-btn px-4">
+            Load Users
+        </button>
+
+         <button id="clearBtn" class="btn vintage-btn px-4">
+            Clear
+        </button>
+    </div>
+    <!--search-->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <input
+                type="text"
+                id="searchInput"
+                class="form-control search-input"
+                placeholder="Search By User name"/>
+        </div>
+    </div>
+    <!--status area-->
+    <div id="statusArea" class="status-area mb-4 text-center"></div>
+    <!--User Cards-->
+    <div id="userContainer" class="row g-4"></div>
+
+   </div>
   <script src="script.js"></script>
 </body>
 </html>
