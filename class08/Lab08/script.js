@@ -22,23 +22,23 @@ function setStatus(message, type = "secondary") {
 function clearDashboard() {
     userContainer.innerHTML = "";
     statusArea.innerHTML = "";
-    searchInput.innerHTML = "";
+    searchInput.value = "";
 }
 
 // Load Users
-function loadUsers(){
+async function loadUsers(){
     try{
         setStatus(`
-            <div class="spinner-border spinner-boarder-sm me-2"</div>
+            <div class="spinner-border spinner-border-sm me-2"></div>
             Loading Users....`, "dark");
         const response = await fetch("https://jsonplaceholder.typicode.com/users");
         if(!response.ok){
             throw new Error("Failed to Fetch users.");
         }
 
-        const users = await.response.json();
+        const users = await response.json();
 
-        loadedUsers = userProfile.slice(0, 5);
+        loadedUsers = users.slice(0, 5);
 
         userContainer.innerHTML = "";
 
@@ -51,3 +51,7 @@ function loadUsers(){
         setStatus(error.message, "danger");
     }
 }
+
+
+loadBtn.addEventListener("click", loadUsers);
+clearBtn.addEventListener("click", clearDashboard);
