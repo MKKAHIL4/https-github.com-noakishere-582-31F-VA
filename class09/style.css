@@ -1,0 +1,39 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: aliceblue;
+    text-align: center;
+    padding: 40px;
+
+    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/049/855/347/small/nature-background-high-resolution-wallpaper-for-a-serene-and-stunning-view-photo.jpg");
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no repeat;
+}
+
+button {
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: 3px solid #5a3b1e;
+    background: #f0e0c2;
+    cursor: pointer;
+}
+
+.card {
+    margin: 30px auto;
+    width: 400px;
+    padding: 20px;
+    border: 3px solid #a67c52;
+    border-radius: 18px;
+    background: #fff8e7;
+    box-shadow: 6px 6px 0 #5a3b1e;
+
+    opacity: 0;
+    transform: scale(0.9);
+    transition: 0.3s;
+}
+
+.card.show {
+    opacity: 1;
+    transform: scale(1);
+}
