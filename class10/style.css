@@ -1,24 +1,24 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     background: black;
-    color:#e06635;
     padding: 20px;
     background-image:url("https://www.nyckel.com/assets/images/functions/bookstore-brands.webp");
 }
 
 h1 { 
     text-align: center;
-    color:#c8c8db;
+    color:#dbcfcf;
     border: 3px solid red;
     padding: 20px 20px;
+    margin-top: 70px;
 }
 
 .subtitle {
     font-size: 20px;
     text-align: center;
-    color: whitesmoke;
+    color: rgb(235, 233, 209);
+    font-weight: bold;
 }
-
 /*BOOKS*/
 
 #library {
@@ -28,7 +28,8 @@ h1 {
     margin-top: 20px;
 }
 .book {
-    background: #585b5e;
+    color: #FF5722;
+    background:#303841;
     border: 2px solid #521405;
     border-radius: 10px;
     padding: 25px;
@@ -37,15 +38,27 @@ h1 {
 
 /*Buttons*/
 
-button {
-    margin: 5px 5px 0 0;
-    padding: 6px 10px;
-    border: 1px solid #564cb3;
-    border: 5px;
+ button {
+    margin: 6px 6px 0 0;
+    padding: 10px 14px;
+    border: none;
     cursor: pointer;
     font-family: Georgia, serif;
-    background: #f0e0c2;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    background:linear-gradient(to bottom, #d9c7a3, #b89a6a);
+    color: #2b1b10;
+    border-radius: 0;
+    box-shadow: 2px 2px 0 #3b2a1a,
+    6px 6px  0 #1a0f08;
+    transition: all 0.15s ease;
 }
+button:hover{
+    transform: translate(2px, 2px);
+   box-shadow: 2px 2px 0 #3b2a1a,
+    6px 6px  0 #1a0f08;
+}
+
 .borrow{ background: #8e95ce; }
 .return { background: #8468b0; }
 .toggle{ background:#12a3e6 ;}
@@ -73,4 +86,37 @@ button {
     white-space: pre-line;
     max-height: 150px;
     overflow-y: auto ;
+}
+
+/*POP UP*/
+.toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    background: #fff8e7;
+    border: 3px solid #5a3b1e;
+    box-shadow: 10px 10px 0 #5a3b1e;
+    padding: 20px 25px;
+    border-radius: 12px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s ease;
+    min-width: 220px;
+    text-align: center;
+}
+
+.toast.show{
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1);
+}
+@keyframes waveMotion{
+    0% {transform: translateY(0px)}
+    50% {transform: translateY(-4px)}
+    100% {transform: translateY(0px)}
+    
+}
+button{
+    animation: waveMotion 3s ease-in-out infinite;
 }
