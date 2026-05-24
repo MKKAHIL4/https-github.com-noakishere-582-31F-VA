@@ -55,3 +55,9 @@ setTimeout(() => {
     toast.classList.remove("show")
 }, 3000);
 }
+
+// archive function 
+function addToArchive(message) {
+    logs.push(message);
+    archiveLog.textContent = logs.join("\n\n");
+} 
