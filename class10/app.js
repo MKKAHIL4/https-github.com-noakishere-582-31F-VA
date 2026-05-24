@@ -24,24 +24,34 @@ Book.prototype.returnBook = function() {
 
 Book.prototype.toggleAvailability = function() {
     this.available = !this.available
-    return `${this.title} availabilty ${this.available}`;
+    return `${this.title} availability ${this.available}`;
 };
 
 
 // data and info
 const books = [
     new Book("CleanCode", "RobertC Martin"), 
-    new Book("Eloquen Java Script", "Marjin Haverbeke"), 
+    new Book("Eloquen Java Script", "Marjin Haverbeke", false), 
     new Book("You Dont Know JS","Kyle Simon"), 
     new Book("The Pragmatic Programmer", "Andrew Hunt" ), 
 
 ]
 
 //dom
-const librarydiv = document.getElementbyId("library");
-const toast = document.getElementbyId("toast");
-const toastMessage = document.getElementbyId("toastMessage");
-const archiveLog= document.getElementbyId("archiveToast");
+const librarydiv = document.getElementById("library");
+const toast = document.getElementById("toast");
+const toastMessage = document.getElementById("toastMessage");
+const archiveLog= document.getElementById("archiveLog");
 
 //store history
-let logs [];
+let logs = [];
+
+//Toast Function 
+function showToast(message) {
+    toastMessage.textContent = message;
+    toast.classList.add("show");
+
+setTimeout(() => {
+    toast.classList.remove("show")
+}, 3000);
+}
