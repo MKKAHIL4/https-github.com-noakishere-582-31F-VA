@@ -18,7 +18,9 @@ h1 {
     text-align: center;
     color: whitesmoke;
 }
+
 /*BOOKS*/
+
 #library {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -34,6 +36,7 @@ h1 {
 }
 
 /*Buttons*/
+
 button {
     margin: 5px 5px 0 0;
     padding: 6px 10px;
@@ -49,3 +52,25 @@ button {
 
 /* archive pannel*/
 
+#archive{
+    margin-top: 30px;
+    justify-content: center;
+    text-align: center;
+    margin-left: 350px;
+    padding: 15px;
+    max-width: 50%;
+    border: 2px solid #16100b;
+    background: #e9e6e1;
+    box-shadow: 6px 6px 0 #5a3b1e;
+    border-radius: 10px;
+}
+
+#archive h3 {
+    margin-top: 0;
+}
+#archiveLog{
+    font-family: monospace;
+    white-space: pre-line;
+    max-height: 150px;
+    overflow-y: auto ;
+}
