@@ -11,7 +11,7 @@ body {
     background-repeat: no-repeat;
 }
 
-#title{
+#title {
     font-family: 'Courier New', Courier, monospace;
     font-size: 60px;
     color:black;
@@ -21,7 +21,8 @@ body {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-te    
+    color: white;
+    text-shadow: 2px 2px 5px black;    
 }
 
 button {
