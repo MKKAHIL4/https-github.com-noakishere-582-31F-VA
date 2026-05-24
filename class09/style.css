@@ -8,14 +8,20 @@ body {
     
     background-size: cover;
     background-position: center;
-    background-repeat: no repeat;
+    background-repeat: no-repeat;
 }
 
 #title{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 40px;
-    color: black;
-    margin-top: 220px;
+    font-size: 60px;
+    color:black;
+    margin-top: 200px;
+    border:3px solid #a67c52;
+    width: 600px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+te    
 }
 
 button {
