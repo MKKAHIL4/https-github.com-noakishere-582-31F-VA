@@ -5,7 +5,7 @@ import {showCard } from "./ui.js";
 const btn = document.getElementById("runBtn");
 
 let greeted = false
-btn.addEventListener(click, () => {
+btn.addEventListener("click", () => {
     let message;
 
     if(!greeted) {
