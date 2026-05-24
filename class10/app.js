@@ -61,3 +61,47 @@ function addToArchive(message) {
     logs.push(message);
     archiveLog.textContent = logs.join("\n\n");
 } 
+
+// render books
+function renderBooks(){
+    libraryDiv.innerHTML = "";
+
+    books.forEach((book => {
+        const div = document.createElement("div");
+        div.className = "book";
+
+    div.innerHTML = `
+        <h3>${book.title}</h3>
+        <p>${book.displayInfo()}</p>
+
+        <button class="borrow">Borrow</button>
+        <button class="return">Return</button>
+        <button class="toggle">Toggle</button>
+     `;
+
+     div.querySelector(".borrow").onclick = () => {
+        const msg = book.borrow();
+        showToast(msg);
+        addToArchive(msg);
+        renderBooks();
+     };
+    
+      div.querySelector(".return").onclick = () =>  {
+        const msg = book.returnBook();
+        showToast(msg);
+        addToArchive(msg);
+        renderBooks();
+     };
+    
+    
+      div.querySelector(".toggle").onclick = () => {
+        const msg = book.toggleAvailability();
+        showToast(msg);
+        addToArchive(msg);
+        renderBooks();
+     };
+     
+    libraryDiv.appendChild(div);
+    }));
+}
+renderBooks();
