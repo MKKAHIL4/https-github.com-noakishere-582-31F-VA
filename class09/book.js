@@ -24,6 +24,7 @@ returnBook(){
     this.available = true;
     return `${this.title} returned`;
 }
+
 toggle() {
     this.available = !this.available;
     return `${this.title} ${this.available}`;
