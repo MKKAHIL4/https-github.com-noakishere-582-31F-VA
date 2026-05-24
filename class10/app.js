@@ -23,7 +23,7 @@ Book.prototype.returnBook = function() {
 };
 
 Book.prototype.toggleAvailability = function() {
-    this.available = !this.available
+    this.available = !this.available;
     return `${this.title} availability ${this.available}`;
 };
 
@@ -31,17 +31,17 @@ Book.prototype.toggleAvailability = function() {
 // data and info
 const books = [
     new Book("CleanCode", "RobertC Martin"), 
-    new Book("Eloquen Java Script", "Marjin Haverbeke", false), 
+    new Book("Eloquent JavaScript", "Marjin Haverbeke", false), 
     new Book("You Dont Know JS","Kyle Simon"), 
     new Book("The Pragmatic Programmer", "Andrew Hunt" ), 
 
 ]
 
 //dom
-const librarydiv = document.getElementById("library");
+const libraryDiv = document.getElementById("library");
 const toast = document.getElementById("toast");
 const toastMessage = document.getElementById("toastMessage");
-const archiveLog= document.getElementById("archiveLog");
+const archiveLog = document.getElementById("archiveLog");
 
 //store history
 let logs = [];
