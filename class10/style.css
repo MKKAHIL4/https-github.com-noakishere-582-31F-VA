@@ -18,3 +18,34 @@ h1 {
     text-align: center;
     color: whitesmoke;
 }
+/*BOOKS*/
+#library {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 20px;
+}
+.book {
+    background: #585b5e;
+    border: 2px solid #521405;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 4px 4px 0 #e7e4e0;
+}
+
+/*Buttons*/
+button {
+    margin: 5px 5px 0 0;
+    padding: 6px 10px;
+    border: 1px solid #564cb3;
+    border: 5px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    background: #f0e0c2;
+}
+.borrow{ background: #8e95ce; }
+.return { background: #8468b0; }
+.toggle{ background:#12a3e6 ;}
+
+/* archive pannel*/
+
