@@ -1,0 +1,41 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20%;
+    background-color: #f4f4f4;
+    background-image: url("https://www.shutterstock.com/image-photo/funny-pug-dog-cat-sunglasses-260nw-2076915523.jpg");
+
+}
+
+h1{
+    color: whitesmoke;
+}
+
+button{
+    padding: 10px 15px;
+    border: none;
+    background-color: #222;
+    color: white;
+    cursor:pointer;
+    border-radius: 5px;
+
+}
+button:hover{
+    background-color: #444;
+}
+
+#output{
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10 rgba(0, 0, 0, 0.1);
+
+}
+.section{
+    margin-bottom: 25px;
+}
+hr{
+    margin: 20px 0;
+}
+.highlight{
+    color: rgb(104, 218, 52);
+}
