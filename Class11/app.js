@@ -7,7 +7,7 @@ function Animal(name){
 }
 Animal.prototype.describe = function () {
     return`This animal is named ${this.name}`;
-}
+};
 
 //Part2 Dog child Constructor:
 
@@ -19,11 +19,27 @@ function Dog(name, breed) {
 
 //Inheritance connection 
 Dog.prototype = Object.create(Animal.prototype);
-Dog.prototype.connstructor = Dog;
+Dog.prototype.constructor = Dog;
 
 //Reset Constructor
 Dog.prototype.bark = function() {
     return `${this.name} barks loudly`;
-}
+};
 
-//
+//part3: cat Child Constructor
+
+function Cat(name, color) {
+    Animal.call(this, name);
+
+    this.color = color;
+}
+//Inheritance connection
+Cat.prototype = Object.create(Animal.prototype);
+
+//reset constructor
+Cat.prototype.constructor = Cat;
+
+//Cat Specified method
+Cat.prototype.meow = function () {
+    return `${this.name} meow`;
+};
