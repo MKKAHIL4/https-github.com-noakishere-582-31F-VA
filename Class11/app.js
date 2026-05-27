@@ -96,11 +96,11 @@ function ElectricCar(brand, model, batteryLevel) {
 //inheritance connection
 ElectricCar.prototype = Object.create(Car.prototype);
 
-//Electric car - specofic method
+//Electric car - specific method
 
 ElectricCar.prototype.charge = function () {
     this.batteryLevel = 100;
-    return `${this.model} is fully charged`;
+    return `${this.model} : is fully charged`;
 };
 
 //part7 class syntax version
@@ -181,7 +181,7 @@ output.innerHTML = `
 
             <p>${electric1.describe()}</p>
             <p>${electric1.showModel()}</p>
-            <p>Battery level${electric1.batteryLevel} %</p>
+            <p>Battery level is : ${electric1.batteryLevel} %</p>
             <p>${electric1.charge()}</p>
 
     </div>
@@ -196,6 +196,23 @@ output.innerHTML = `
 
     </div>
 `;
+// check if inheritance is functional
+
+console.log(
+    Object.getPrototypeOf(Dog.prototype) === Animal.prototype);
+
+console.log(
+    Object.getPrototypeOf(Car.prototype) === Vehicle.prototype);
+
+console.log(
+    Object.getPrototypeOf(ElectricCar.prototype) === Car.prototype);
 
 
+console.log(dog1.descibe());
+console.log(cat1.descibe());
+console.log(car1.descibe());
+
+console.log(dog1.bark());
+console.log(cat1.meow());
+console.log(electric1.charge());
 });
