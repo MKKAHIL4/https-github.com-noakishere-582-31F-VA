@@ -53,6 +53,22 @@ Cat.prototype.meow = function () {
     return `${this.name} meow`;
 };
 
+// challnge #3
+function Turtle(name, age, speed){
+    Animal.call(this, name);
+
+    this.age = age;
+    this.speed = speed;
+
+}
+Turtle.prototype = Object.create(Animal.prototype);
+Turtle.prototype.constructor = Turtle;
+
+//unique method challenge3
+Turtle.prototype.move = function (){
+    return `${this.name} moves at ${this.speed} km/h`;
+};
+
 //part4 Vehicle parent Constructor
 function Vehicle(brand) {
     this.brand = brand;
@@ -61,8 +77,10 @@ function Vehicle(brand) {
 Vehicle.prototype.describe = function () {
     return `Vehicle Brand: ${this.brand}`;
 };
+
 //challenge2 
 Vehicle.prototype.type = "Transport";
+
 //part5 Car child constructor
 function Car(brand, model, running = false){
     Vehicle.call(this, brand);
@@ -147,9 +165,11 @@ runDemoBtn.addEventListener("click", () => {
     const dog1 = new Dog("Micky", "Poodel");
     const cat1 = new Cat("Easy", "Black");
     const car1 = new Car("X5", "BMW");
+    const turtle1 = new Turtle("Steffi", 40, 2);
     //testing challenge2 
     console.log(car1.type);//challnege #2
     console.log(dog1.kingdom);//challnege #2
+
 
 
     const electric1 = new ElectricCar("Tesla", "Model 3", 45);
@@ -211,6 +231,15 @@ output.innerHTML = `
             <p>${dog2.bark()}</p>
 
     </div>
+
+    <div class="section">
+        <h2>Turtle Example</h2>
+
+        <p>${turtle1.describe()}</p>
+        <p>Age: ${turtle1.age}</p>
+        <p>${turtle1.move()}</p>
+    </div>
+
 `;
 // check if inheritance is functional
 
