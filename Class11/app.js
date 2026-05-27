@@ -43,3 +43,63 @@ Cat.prototype.constructor = Cat;
 Cat.prototype.meow = function () {
     return `${this.name} meow`;
 };
+
+//part4 Vehicle parent Constructor
+function Vehicle(brand) {
+    this.brand = brand;
+}
+
+Vehicle.prototype.describe = function () {
+    return `Vehicle Brand: ${this.brand}`;
+};
+
+//part5 Car child constructor
+function Car(brand, model, running = false){
+    Vehicle.call(this, brand);
+
+    this.model = model;
+    this.running = running;
+}
+
+//inheritance connection
+Car.prototype = Object.create(Vehicle.prototype);
+
+//Reset Constructor
+Car.prototype.constructor = Car;
+
+//Car specific-methods
+Car.prototype.start = function() {
+    this.running = true;
+
+    return `${this.model} is running`;
+};
+
+Car.prototype.stop = function() {
+    this.running = false;
+
+    return `${this.model} has stopped`;
+};
+
+Car.prototype.showModel = function() {
+    return `Model: ${this.model}`;
+};
+
+// part 6 Electric car Child Constructor
+
+function ElectricCar(brand, model, batteryLevel) {
+
+    //call parent constructor
+    Car.call(this, brand, model);
+
+    this.batteryLevel = batteryLevel;
+}
+//inheritance connection
+ElectricCar.prototype = Object.create(Car.prototype);
+
+//Electric car - specofic method
+
+ElectricCar.prototype.charge = function () {
+    this.batteryLevel = 100;
+    return `${this.model} is fully charged`;
+};
+
