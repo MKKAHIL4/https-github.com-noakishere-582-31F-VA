@@ -125,3 +125,24 @@ class DogClass extends AnimalClass {
         return `${this.name} barks`;
     }
 }
+
+//Part8--Button Output
+
+const runDemoBtn = document.getElementById("run-demo-btn");
+
+const output = document.getElementById("output");
+runDemoBtn.addEventListener("click", () => {
+    //craeting objects
+    const dog1 = new Dog("Micky", "Poodel");
+    const cat1 = new Cat("Easy", "Black");
+    const car1 = new Car("X5", "BMW");
+
+    const electric1 = new ElectricCar("Tesla", "Model 3", 45);
+
+    //class syntax object
+    const dog2 = new DogClass("Ralph", "German Sheperd");
+    
+}
+
+
+)
