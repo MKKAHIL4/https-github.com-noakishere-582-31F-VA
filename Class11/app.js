@@ -103,3 +103,25 @@ ElectricCar.prototype.charge = function () {
     return `${this.model} is fully charged`;
 };
 
+//part7 class syntax version
+
+class AnimalClass {
+    constructor(name){
+        this.name = name
+    }
+
+    describe() {
+        return`This animal is named ${this.name}`;
+    }
+}
+
+class DogClass extends AnimalClass {
+    constructor(name, breed) {
+        super(name);
+        this.breed = breed;
+    }
+
+    bark() {
+        return `${this.name} barks`;
+    }
+}
