@@ -141,8 +141,61 @@ runDemoBtn.addEventListener("click", () => {
 
     //class syntax object
     const dog2 = new DogClass("Ralph", "German Sheperd");
-    
-}
 
 
-)
+//OUTPUT TO PAGE
+output.innerHTML = `
+    <div class="section">
+        <h2>Dog Example</h2>
+        
+        <p>${dog1.describe()}</p>
+        <p>Breed: ${dog1.breed}</p>
+        <p>${dog1.bark()}</p>
+    </div>
+<hr></hr>
+
+    <div class="section">
+            <h2>Cat Example</h2>
+           
+            <p>${cat1.describe()}</p>
+            <p>Color: ${cat1.color}</p>
+            <p>${cat1.meow()}</p>
+    </div>
+
+    <hr></hr>
+
+    <div class="section">
+            <h2>Car Example</h2>
+
+            <p>${car1.describe()}</p>
+            <p>${car1.showModel()}</p>
+            <p>${car1.start()}</p>
+            <p>${car1.stop()}</p>
+
+    </div>
+        
+        <hr></hr>
+
+    <div class="section">
+            <h2>Electric car Example Example</h2>
+
+            <p>${electric1.describe()}</p>
+            <p>${electric1.showModel()}</p>
+            <p>Battery level${electric1.batteryLevel} %</p>
+            <p>${electric1.charge()}</p>
+
+    </div>
+
+        <hr></hr>
+
+    <div class="section">
+            <h2>Class Syntax Example</h2>
+
+            <p>${dog2.describe()}</p>
+            <p>${dog2.bark()}</p>
+
+    </div>
+`;
+
+
+});
