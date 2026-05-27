@@ -9,6 +9,10 @@ Animal.prototype.describe = function () {
     return`This animal is named ${this.name}`;
 };
 
+//challenge #2
+
+Animal.prototype.kingdom = "Animalia - Living Organisms";
+
 //Part2 Dog child Constructor:
 
 function Dog(name, breed) {
@@ -25,6 +29,11 @@ Dog.prototype.constructor = Dog;
 Dog.prototype.bark = function() {
     return `${this.name} barks loudly`;
 };
+//#challnge 1 override
+Dog.prototype.describe = function() {
+    return`${this.name}, the ${this.breed}, is a loyal and fun compainion.`
+};
+
 
 //part3: cat Child Constructor
 
@@ -52,7 +61,8 @@ function Vehicle(brand) {
 Vehicle.prototype.describe = function () {
     return `Vehicle Brand: ${this.brand}`;
 };
-
+//challenge2 
+Vehicle.prototype.type = "Transport";
 //part5 Car child constructor
 function Car(brand, model, running = false){
     Vehicle.call(this, brand);
@@ -95,6 +105,7 @@ function ElectricCar(brand, model, batteryLevel) {
 }
 //inheritance connection
 ElectricCar.prototype = Object.create(Car.prototype);
+ElectricCar.prototype.constructor = ElectricCar;
 
 //Electric car - specific method
 
@@ -136,6 +147,10 @@ runDemoBtn.addEventListener("click", () => {
     const dog1 = new Dog("Micky", "Poodel");
     const cat1 = new Cat("Easy", "Black");
     const car1 = new Car("X5", "BMW");
+    //testing challenge2 
+    console.log(car1.type);//challnege #2
+    console.log(dog1.kingdom);//challnege #2
+
 
     const electric1 = new ElectricCar("Tesla", "Model 3", 45);
 
@@ -147,7 +162,7 @@ runDemoBtn.addEventListener("click", () => {
 output.innerHTML = `
     <div class="section">
         <h2>Dog Example</h2>
-        
+        <p>${dog1.kingdom}</p>
         <p>${dog1.describe()}</p>
         <p>Breed: ${dog1.breed}</p>
         <p>${dog1.bark()}</p>
@@ -171,6 +186,7 @@ output.innerHTML = `
             <p>${car1.showModel()}</p>
             <p>${car1.start()}</p>
             <p>${car1.stop()}</p>
+            <p>Type: ${car1.type}</p>
 
     </div>
         
@@ -208,9 +224,9 @@ console.log(
     Object.getPrototypeOf(ElectricCar.prototype) === Car.prototype);
 
 
-console.log(dog1.descibe());
-console.log(cat1.descibe());
-console.log(car1.descibe());
+console.log(dog1.describe());
+console.log(cat1.describe());
+console.log(car1.describe());
 
 console.log(dog1.bark());
 console.log(cat1.meow());
