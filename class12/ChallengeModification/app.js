@@ -50,10 +50,12 @@ loadPostBtn.addEventListener("click", () => {
                 <p>${post.body}</p>
             `;
             status.textContent = "Post loaded successfully.";
+            status.className = "success";
         } )
 
         .catch((error) => {
             status.textContent = "Error:" + error.message;
+            status.className = "error"
         })
 
         .finally(() => {
@@ -63,6 +65,7 @@ loadPostBtn.addEventListener("click", () => {
         
         }catch(error) {
             status.textContent = "Validation Error: " + error.message;
+            status.className = "error"
         
         }
     });
