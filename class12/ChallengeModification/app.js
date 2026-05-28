@@ -5,12 +5,12 @@ const clearBtn = document.getElementById("clear-btn");
 const postIdInput= document.getElementById("post-id-input");
 const status = document.getElementById("status");
 const output = document.getElementById("output");
-
+//clear if adding a number without displaying old post or comment /reset
 postIdInput.addEventListener("input", () => {
     output.innerHTML = "";
     status.textContent = "Ready";
 });
-
+//validation
 function validatePostId(id) {
     if(typeof id !== "number" || isNaN(id)) {
         throw new Error("Post Id Must Be a Valid Number");
@@ -25,6 +25,7 @@ function validatePostId(id) {
     }
 }
 
+//event listener
 loadPostBtn.addEventListener("click", () => {
     try {
         const id = Number(postIdInput.value);
@@ -36,6 +37,7 @@ loadPostBtn.addEventListener("click", () => {
 
         loadPostBtn.disabled = true; //step6 finally 
         
+        //fetch
         fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
         .then((response) => {
             if(!response.ok){
@@ -57,12 +59,12 @@ loadPostBtn.addEventListener("click", () => {
             status.textContent = "Error:" + error.message;
             status.className = "error"
         })
-
+        //ffinally function
         .finally(() => {
             console.log("Request finished");
             loadPostBtn.disabled = false; //finally modification
         });
-        
+        //validation error
         }catch(error) {
             status.textContent = "Validation Error: " + error.message;
             status.className = "error"
