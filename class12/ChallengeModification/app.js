@@ -6,6 +6,10 @@ const postIdInput= document.getElementById("post-id-input");
 const status = document.getElementById("status");
 const output = document.getElementById("output");
 
+postIdInput.addEventListener("input", () => {
+    output.innerHTML = "";
+    status.textContent = "Ready";
+});
 
 function validatePostId(id) {
     if(typeof id !== "number" || isNaN(id)) {
@@ -61,4 +65,55 @@ loadPostBtn.addEventListener("click", () => {
             status.textContent = "Validation Error: " + error.message;
         
         }
+    });
+
+    //adding comment button challnge 
+loadCommentBtn.addEventListener("click", () => {
+    try{
+        const id = Number(postIdInput.value);
+        validatePostId(id);
+
+        status.textContent = "Loading comment ...";
+        output.innerHTML = "";
+
+        loadCommentBtn.disabled = true; 
+
+        fetch(`https://jsonplaceholder.typicode.com/comments/${id}`)
+        
+        .then((response) => {
+            if(!response.ok){
+                throw new Error(`HTTP error:  ${response.status}`);
+            }
+            return response.json();
+         })
+         
+        .then((comment) => {
+            output.innerHTML = `
+               
+                <p>${comment.body}<p>
+                <small>${comment.email}</small>
+            `;
+            status.textContent = "Comment loaded successfully.";
+        })
+
+        .catch((error) => {
+            status.textContent = "Error:" + error.message;
+        })
+        
+        .finally(() => {
+            console.log("Comment Request finished");
+            loadCommentBtn.disabled = false; 
+        });
+        
+        }catch(error) {
+            status.textContent = "Validation Error: " + error.message;
+        
+        }
+    });
+
+    //clear button
+    clearBtn.addEventListener("click", () => {
+        postIdInput.value = "";
+        status.textContent = "Ready";
+        output.innerHTML = "";
     });

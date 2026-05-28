@@ -39,7 +39,7 @@ loadPostBtn.addEventListener("click", () => {
             }
             return response.json();
          })
-         
+
         .then((post) => {
             output.innerHTML = `
                 <h2>${post.title}</h2>
@@ -49,11 +49,11 @@ loadPostBtn.addEventListener("click", () => {
         } )
 
         .catch((error) => {
-            status.textContent = "Error:" + error.message;
+            status.textContent = "Error: " + error.message;
         })
 
         .finally(() => {
-            console.log("Request finished");
+            console.log("Post Request finished");
             loadPostBtn.disabled = false; //finally modification
         });
         
