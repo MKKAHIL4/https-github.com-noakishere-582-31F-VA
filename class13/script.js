@@ -110,3 +110,45 @@ class Bug {
 bug = new Bug("hi"); // throws an error if there are no setters
 console.log(bug.name);
 
+//static properties
+
+/**
+ * Static properties and Methods 
+ * static members belong to the class itself and not to the individual objects
+ * 
+ * they are used like: ClassName.member
+ * and not : isntance.member
+ * 
+ * static methods and properties ahelp us to use
+ * in defferent situations
+ * mostyl used as helper functions
+ * 
+ * PAY ATTENTION CONST HELPER = new MathHelper(),
+ * HELPER.ADD(2,3)/ THIS WOULD THROW AN ERROR BECAUSE THE METHOD BELONGS TO THE CLASS.
+ */
+
+class MathHelper {
+    //add belongs to the class and not to any one mATHhELPER oBJECT;
+    static add(a, b) {
+        return a + b;
+    }
+}
+result = MathHelper.add(2,3);
+console.log(result);
+
+
+
+class Student
+{
+    static counter = 0;
+
+    constructor(name) {
+       this.name = name;// this belongs to the object
+       //this.counter +=1; // this would only update once
+       Student.counter += 1;// student belongs to the class
+    }
+}
+const s1 = new Student("Jane");
+const s2 = new Student("Joe");
+
+console. log(`We have a total of ${Student.counter} students`);
