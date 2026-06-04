@@ -152,3 +152,28 @@ const s1 = new Student("Jane");
 const s2 = new Student("Joe");
 
 console. log(`We have a total of ${Student.counter} students`);
+
+
+class Product2 {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+    static isValidPrice(value) {
+        return typeof value === "number" && value >= 0;
+}
+
+    set price(value) {
+         if (Product2.isValidPrice) {
+            this .__price = value;
+         }else {
+            throw new Error("Wrong price");
+    }    
+}
+    get price() {
+        return this .__price;
+    }
+}
+
+console.log(Product2.isValidPrice(25));
+console.log(Product2.isValidPrice(-10));
