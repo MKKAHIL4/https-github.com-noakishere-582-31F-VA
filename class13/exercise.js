@@ -72,7 +72,7 @@ class Course {
     }
 
     get label() {
-        return`${this.title} ${this.credits} credits`;
+        return`${Course.schoolName} -- ${this.title} : ${this.credits} credits`;
     }
 
     set credits(value) {
