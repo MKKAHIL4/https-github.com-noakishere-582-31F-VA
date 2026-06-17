@@ -1,4 +1,4 @@
-class usercard extends HTMLElement {
+class userCard extends HTMLElement {
     connectedCallback() {
         this.innerHTML=`
         <div>
@@ -9,7 +9,7 @@ class usercard extends HTMLElement {
     }
 }
 
-customElements.define("user-card", UserCard);
+customElements.define("user-card", userCard);
 
 // ^^ this works, but:
 
@@ -33,15 +33,15 @@ class HelloShadow extends HTMLElement {
 
         shadow.innerHTML = `
         <div>
-        <h2> hello from Shadow DOM</h2>
-        <p> This content lives inside the shadow root.</p>
+            <h2> hello from Shadow DOM</h2>
+            <p> This content lives inside the shadow root.</p>
         </div>
         `;
     }
 }
 //we are still rendering the elemnt, but its internal straucture belongs to its own DOM
 
-customElements.define("helo-shadow", HellowShadow);
+customElements.define("hello-shadow", HelloShadow);
 
 //without shadow DOM:
 //-outisde page styles may change your component unexpectedly
@@ -67,9 +67,11 @@ class Fancycard extends HTMLElement {
             }
             
             h2{
-            color:purple;
-            margin-top: 0;}
+                color:purple;
+                margin-top: 0;
+            }
         </style>
+
         <div class="card">
             <h2>Shadow card</h2>
             <p> This is scoped inside the component.</p>
@@ -77,37 +79,90 @@ class Fancycard extends HTMLElement {
         `;
     }
 }
-customElements.define("fancy-card", FancyCard);
+customElements.define("fancy-card", Fancycard);
 
 // **
 //* Using attributes with Shadow DOM
 //*/
+
 class PlayerCard extends HTMLElement {
-    connectedCallback() {
-        const shadow = this.attachShadow({ mode: "open" });
+  connectedCallback() {
+    const shadow = this.attachShadow({ mode: "open" });
 
-        const name = this.getAttribute("name");
-        const goals = this.getAttribute("goals");
-        const imgUrl = this.getAttribute("image-url");
+    const name = this.getAttribute("name");
+    const goals = this.getAttribute("goals");
+    const imgUrl = this.getAttribute("image-url");
 
-        shadow. innerHTML =`
-            <style>
-            .card {
-                border: 1px solid #333;
-                padding: 1rem;
-                margin-bottom: 1rem;
-                background: O#111;
-                color: white;
-                border-radius: 8px;
+    shadow.innerHTML = `
+    <style>
+     .card {
+        border: 1px solid #333;
+        padding: 1rem; 
+        margin-top: 1rem;
+        background: #111;
+        color: white;
+        border-radius: 8px;
+     }
 
-            </style>
-
-            <div class="card">
-                <h2>${name}</h2>
-                <p>Goals: ${goals}</h2>
-                <img src="${imgUr1}">
-            </div>
-`;
-    }
+     img {
+      border: 1px;
+      border-radius: 95%;
+     }
+    </style>
+    
+    <div class="card">
+        <h2>${name}</h2>
+        <p>Goals: ${goals}</h2>
+        <img src="${imgUrl}">
+    </div>
+    `;
+  }
 }
 customElements.define("player-card", PlayerCard);
+
+class PaintingCard extends HTMLElement {
+    connectedCallback() {
+        this.render();
+    }
+    getArtist() {
+        return this.getAttribute("artist") || "Unknown";
+    }
+    getImgURL() {
+        return this.getAttribute("image-url") || "";    
+    }
+    render() {
+        const shadow = this.attachShadow({ mode: "open" });
+       
+
+shadow.innerHTML =`
+    <style>
+        .card {
+            border: 1px solid #333;
+            padding: 1rem;
+            background: #4e4e4e;
+            color: white;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        img {
+            max-width: 640px;
+            max-height: 380px;
+        }
+    </style>
+    `;
+    }
+  // handles the output
+  render() {
+    const shadow = this.attachShadow({ mode: "open" });
+
+    shadow.innerHTML = `
+        ${this.renderStyle()}
+
+        <div class="card">
+            <h2>${this.getArtist()}</h2>
+            <img src="${this.getImgURL()}">
+        </div>
+        `;
+  }
+}
+customElements.define("painting-card, PaintingCard");
