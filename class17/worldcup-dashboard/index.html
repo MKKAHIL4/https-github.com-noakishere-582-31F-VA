@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>World Cup Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+    <main class="app">
+        <header class="header">
+            <h1>🌍World Cup Dashboard🌎</h1>
+            <p id="status">⚽⬇️Click "Load Teams"⚽ below to begin⬇️⚽</p>
+
+        </header>
+        <!--------  --------->
+       🌍🌎🌎🏆🏆🧹⚽⚽🎯🎯🎯⬇️
+        <!--------buttons --------->
+        
+        <div class="controls">
+            <button id="load-btn">⚽Teams Display⚽ </button>
+            <button id="clear-btn">🧹 Clear dashBoard🧹</button>
+        
+        </div>
+        
+        <!-------- teams section 3*2 grid --------->
+        
+        <section class="teams-section">
+            <h2 teams-header> 🏆🏆Teams Display🏆🏆 </h2>
+            <div id="teams-container" class="teams-grid"></div>
+        
+        </section>
+
+        <!-------- Details section (Fifa Popup) --------->
+
+        <section class="details-section">
+            <h2 class="selected-tms">🎯Select A Team🎯</h2>
+
+            <div id="details-container" class="details-box">
+
+                <p class="no-t-selected">No Team Is Selected Yet</p>
+            
+            </div>
+        
+        </section>
+    </main> 
+    
+    <script type="module" src="app.js"></script>
+
+
+</body>
+</html>
