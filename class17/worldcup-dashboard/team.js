@@ -3,8 +3,9 @@ export class Team{
         this.id = id;
         this.name = name;
         this.group = group;
+        this._points = points;
         this.played =  played;
-        this.goaldifference = goaldifference  ;
+        this.goalDifference = goalDifference  ;
 
     }
 
@@ -14,13 +15,15 @@ export class Team{
             data.id,
             data.name,
             data.group,
+            data.points,
             data.played,
-            data.goaldifference
+            data.goalDifference
         );
     }
     get points(){
         return this._points;
     }
+    
 
     set points(value){
         if(value < 0){

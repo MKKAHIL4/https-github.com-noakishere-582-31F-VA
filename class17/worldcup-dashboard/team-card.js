@@ -8,7 +8,7 @@ function getTeamStars(name) {
         "France": 2,
         "Brazil": 5,
         "Japan": 0,
-        "Morroco": 0,
+        "Morocco": 0,
         "Canada": 0,
     
     };
@@ -21,38 +21,38 @@ function getTeamTheme(name) {
     const themes = {
         "Argentina": {
             colors: ["#74ACDF", "#FFFFFF"],
-            Accent: "#74ACDF",
-            icon: "AR"
+            accent: "#74ACDF",
+            icon: "🇦🇷"
         },
         
         "France": {
             colors: ["#0055A4", "#ffffff", "#ef4135"],
-            Accent: "#0055A4",
-            icon: "FR"
+            accent: "#0055A4",
+            icon: "🇫🇷"
         },
         
         "Brazil": {
             colors: ["#009C3B", "#FFDF00", "#002776"],
-            Accent: "#009C3B",
-            icon: "BR"
+            accent: "#009C3B",
+            icon: "🇧🇷"
         },
         
-        "Morroco": {
+        "Morocco": {
             colors: ["#C1272D", "#006233"],
-            Accent: "#C1272D",
-            icon: "MA"
+            accent: "#C1272D",
+            icon: "🇲🇦"
         },
         
         "Canada": {
             colors: ["#FF0000", "#FFFFFF"],
-            Accent: "#FF0000",
-            icon: "CA"
+            accent: "#FF0000",
+            icon: "🇨🇦"
         },
         
         "Japan": {
             colors: ["#BC002D", "#FFFFFF"],
-            Accent: "#BC002D",
-            icon: "JP"
+            accent: "#BC002D",
+            icon: "🇯🇵"
         }
     };
     return themes[name] || {
@@ -69,14 +69,14 @@ class TeamCard extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
-        this.team = null;
+        this._team = null;
         
     }
     //DATA INPUT
 
     set team(data){
         this._team = data;
-        this.rednder();
+        this.render();
     }
 
     //HELPER METHODS
@@ -94,7 +94,7 @@ class TeamCard extends HTMLElement {
         return this._team?.played;
     }
     getGoalDifference() {
-        return this._team?.getGoalDifference;
+        return this._team?.goalDifference;
     }
     
 //Render
@@ -111,34 +111,100 @@ class TeamCard extends HTMLElement {
             const bg =`linear-gradient(135deg, ${theme.colors.join(",")})`;
 
             this.shadowRoot.innerHTML = `
-            <style>  
-            
-            
-            
+            <style>
+                .card{
+                    border-radius: 15px;
+                    padding: 15px;
+                    text-align: center;
+                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+                    transition: 0.3s;
+                    color: #111;
+                    margin: 10px;
+                    background: ${bg};
+                }
+
+                .card:hover{
+                    transform: scale(1.05);
+                }
+
+                .icon{
+                    font-size: 24px;
+                    margin-bottom: 5px;
+                }
+
+                .team-name{
+                    font-family: "Trebuchet MS", "Segoe UI", cursive;
+                    font-size: 22px;
+                    font-weight: 900;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25),
+                                0px 0px 10px rgba(0, 0, 0, 0.3);
+                    margin: 8px 0;
+                    transform: skew(-3deg);
+                    transition: 0.3s ease;
+                }
+
+                .card:hover .team-name{
+                    transform: skew(-3deg) scale(1.08);
+                }
+
+                .badge{
+                    display: inline-block;
+                    padding: 6px 10px;
+                    border-radius: 20px;
+                    margin: 4px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    background: rgba(255, 255, 255, 0.75);
+                }
+
+                .stars {
+                    margin-top: 10px;
+                    font-size: 18px;
+                    color: gold;
+                    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+                }
+
+                button{
+                    margin-top: 10px;
+                    padding: 8px 14px;
+                    border: none;
+                    border-radius: 20px;
+                    color: white;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    background: ${theme.accent};
+                }
+
+                button:hover{
+                    transform: scale(1.08);
+                    filter: brightness(1.2);
+                }
             </style>
 
   
-        <div class="card">
-            <div class="icon">${theme.icon}</div>
-            
-            <h3 class="team-name">${name}</h3>
+            <div class="card">
+                <div class="icon">${theme.icon}</div>
+                
+                <h3 class="team-name">${name}</h3>
 
-            <div class="badge">Group ${group}</div>
-            <div class="badge">${points} pts </div>
+                <div class="badge">Group ${group}</div>
+                <div class="badge">${points} pts </div>
 
-            <div style=" margin-top:5px;font-size:13px;">
-                Played: ${played} | GD: ${goalDiff}
+                <div style=" margin-top:5px;font-size:13px;">
+                    Played: ${played} | GD: ${goalDiff}
+                </div>
+
+                <button id="viewBtn">View Details ⚽ </button>
+
+                <div class="stars">
+                    ${"⭐".repeat(Math.max(0,getTeamStars(name)))}
+                </div>
+
             </div>
-
-            <button id="viewBtn">View Details ⚽ </button>
-
-            <div class="stars">
-                ${"⭐".repeat(getTeamsStars(name))}
-            </div>
-
-        </div>
        
-        `;
+            `;
 
         //EVENT
         this.shadowRoot.querySelector("#viewBtn").onclick = () => {
@@ -150,7 +216,7 @@ class TeamCard extends HTMLElement {
                     group,
                     points,
                     played,
-                    GoalDifference: goalDiff
+                    goalDifference: goalDiff
                     }
              }));
         };
