@@ -1,4 +1,4 @@
-export function renderTeams(Teams, container) {
+export function renderTeams(teams, container) {
     console.log("Rendering teams:", teams);
     
     container.innerHTML = "";

@@ -31,7 +31,7 @@ loadBtn.addEventListener("click", async () => {
 
         renderTeams(teams, teamsContainer);
 
-        status.textContent = "Teams loaded Successfully.";
+        status.textContent = "⚽Teams loaded Successfully.⚽";
    
     }catch (error){
 
@@ -51,7 +51,7 @@ clearBtn.addEventListener("click", () =>{
     teamsContainer.innerHTML = "";
     detailsContainer.innerHTML = "";
 
-    status.textContent = "Dashboard cleared. click LOAD to begin."
+    status.textContent = "⚽Dashboard cleared... click 'Load Teams'  to begin.⚽"
 });
 
 //TEAM DETAILS EVENT
@@ -68,11 +68,14 @@ document.addEventListener("team-selected", (event) => {
                 <div class="ball">⚽</div>
 
                 <h2>${t.name}</h2>
-                <p class="group">Group: ${t.group}</p>
-                <p class="points">Points: ${t.points}</p>
-                <p class="played">Played: ${t.played}</p>
-                <p class="gd">Goal Diff: ${t.goalDifference}</p>
+                <p><span class="label">Group:  </span><span class="group">${t.group}</span></p>
                 
+                <p><span class="label">Points:  </span><span class="points">${t.points}</span></p>
+                
+                <p><span class="label">Played:  </span><span class="played">${t.played}</span></p>
+                
+                <p><span class="label">Goal Diff:  </span><span class="gd">${t.goalDifference}</span></p>
+         
             </div>
         </div>
     `;
@@ -80,7 +83,7 @@ document.addEventListener("team-selected", (event) => {
     const closeButton = 
     document.getElementById("close-details")
     closeButton.addEventListener("click", () => {
-        detailsContainer.innerHTML = "<p>No team selected.</p>";
+        detailsContainer.innerHTML = "<p>No team is selected.</p>";
     });
 
     
