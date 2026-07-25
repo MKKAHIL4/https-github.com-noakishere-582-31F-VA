@@ -1,35 +1,208 @@
 body{
+    margin: 0;
     font-family: 'Courier New', Courier, monospace;
-    margin: 40px;
-    background: linear-gradient(black, white);
+    background: linear-gradient(rgb(3, 5, 109), rgb(218, 211, 228));
+    min-height:100vh;
 }
 
 header{
     text-align: center;
-    color:blue;
+    padding:20px;
 
 }
 main {
-    max-width: 600px;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    color:bisque;
+    font-size: 40px;
+    text-shadow: 2px 2px 5px #555;
 }
 
 h2{
-    color:darkgoldenrod;
+    color:white;
+    margin-top: 30px;
 }
 
+.sky{
+	width: 700px;
+	min-height: 350px;
+	background: linear-gradient(
+		to bottom,
+		#4facfe,
+		#00f2fe);
+	border-radius: 30px;
+	display: flex;
+	justify-content: center;
+
+	align-items: center;
+	padding: 40px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+	position: relative;
+}
+.sky::before{
+    content: "";
+    position:absolute;
+    width: 120px;
+    height:50px;
+    background: white;
+    border-radius: 50px;
+    top: 50px;
+    left:-150px;
+    animation:cloudMove 20s linear infinite;
+}
+
+.sky::after{
+    position: absolute;
+    bottom:50px;
+    right:-100px;
+    font-size: 80px;
+    opacity:0.5;
+    animation:cloudMove 25s linear infinite;
+
+}
 .weather-card{
     background: wheat;
-    padding:20px;
-    margin:20px 0;
-    border-radius: 15px;
-    box-shadow:0 5px 15px #999;
+    width:300px;
+    padding:25px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow:0 10px 20px rgba(0, 0, 0, 0.25);
 }
+
+.weather-card h3{
+	color:#333;
+	font-size: 22px;
+
+}
+
 .temperature{
-    font-size: 45px;
-    font-weight: bold;
-    color: burlywood;
+	font-size: 45px;
+	font-weight: bold;
+	color: #0077cc;
 }
+
+.wind,.humidity,.precipitation,.time{
+	font-size: 18px;
+	margin: 12px;
+	color: #444;
+
+}
+
+#uniBtn{
+	border: none;
+	background: #0077cc;
+	color:white;
+	padding: 12px 25px;
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+#uniBtn:hover{
+	background: #005fa3;
+}
+
+.cloud-input{
+	width: 350px;
+	padding: 50px 40px;
+	background: white;
+	border-radius: 60% 60% 50% 50%;
+	text-align: center;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+.cloud-input h3{
+	color: #0077cc;
+}
+.cloud-input input{
+	width: 80%;
+	padding: 12px;
+	margin: 8px;
+	border-radius: 20px;
+	border: 1px solid #ccc;
+}
+
+.cloud-input button{
+	background: #0077cc;
+	color: white;
+	border: none;
+	padding: 12px 30px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+#world{
+	margin-top: 30px;
+	width: 700px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+}
+
+#world h3{
+	width: 100%;
+	text-align: center;
+	color: white;
+	font-size: 28px;
+}
+
+.country-card{
+	background: white;
+	width: 180px;
+	padding: 20px;
+	border-radius: 25px;
+	text-align: center;
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.country-card h4{
+	color: #0077cc;
+	font-size: 20px;
+}
+
+.country-card p{
+	color: #444;
+
+}
+
 .error{
-    color:red;
+	color: red;
+	font-weight: bold;
+}
+
+@media(max-width:750px){
+	.sky{
+		width: 90%;
+		padding: 25px;
+
+	}
+
+	#world {
+		width: 90%;
+
+	}
+	.country-card{
+		width: 90%;
+	}
+}
+@keyframes cloudMove{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(900px)
+    }
+}
+
+@keyframes cloudMoveReverse {
+   from{
+    transform: translateX(0);
+   } 
+   to{
+    transform: translateX(-900px);
+   }
 }
