@@ -1,6 +1,6 @@
-import Performance from "./Performance.js";
+import { Performance } from "./Performance.js";
 
-export class FeaturedPerformance {
+export class FeaturedPerformance extends Performance{
     constructor(
         id,
         title,
@@ -9,22 +9,23 @@ export class FeaturedPerformance {
         time,
         ticketPrice,
         ticketsRemaining,
-        featured
     ) {
         super(
-            title,
+           
             id,
-            stage,
+            title,
             artist,
+            stage,
+            time,
             ticketPrice,
-            ticketsRemaining,
-            time
+            ticketsRemaining
+            
         );
 
-        this.featured = false;
+        this.featured = true;
     }
 
     get lineupLabel() {
-        return "Regular lineup";
+        return "Featured performance";
     }
 }
